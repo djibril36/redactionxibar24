@@ -362,6 +362,91 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titre: Attribute.String;
+    resume: Attribute.RichText;
+    contenu: Attribute.RichText;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    categorie: Attribute.Enumeration<
+      [
+        'Sport',
+        'Afrique',
+        'International',
+        'Soci\u00E9t\u00E9',
+        'Politique',
+        'Culture',
+        'Fais Divers',
+        'Tech',
+        'Education'
+      ]
+    >;
+    sousCategorie: Attribute.Enumeration<['Football']>;
+    date: Attribute.DateTime;
+    datePublication: Attribute.DateTime;
+    priorite: Attribute.String;
+    auteur: Attribute.String;
+    choixRedaction: Attribute.Boolean;
+    format: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategorieCategorie extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'categorie';
+    pluralName: 'categories';
+    displayName: 'categorie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    libelle: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    icone: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -798,6 +883,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::article.article': ApiArticleArticle;
+      'api::categorie.categorie': ApiCategorieCategorie;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
