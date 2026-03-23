@@ -420,7 +420,8 @@ export interface ApiCategorieCategorie extends Schema.CollectionType {
   info: {
     singularName: 'categorie';
     pluralName: 'categories';
-    displayName: 'categorie';
+    displayName: 'Categorie';
+    description: '';
   };
   options: {
     draftAndPublish: true;
