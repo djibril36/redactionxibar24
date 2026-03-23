@@ -28,6 +28,17 @@
     },
     "icone": {
       "type": "string"
+    },
+    "sous_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sous-categorie.sous-categorie"
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article",
+      "mappedBy": "categorie"
     }
   }
 }

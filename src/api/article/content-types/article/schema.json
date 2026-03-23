@@ -4,7 +4,8 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "Article"
+    "displayName": "Article",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,33 +22,14 @@
       "type": "richtext"
     },
     "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
-    },
-    "categorie": {
-      "type": "enumeration",
-      "enum": [
-        "Sport",
-        "Afrique",
-        "International",
-        "Société",
-        "Politique",
-        "Culture",
-        "Fais Divers",
-        "Tech",
-        "Education"
-      ]
-    },
-    "sousCategorie": {
-      "type": "enumeration",
-      "enum": [
-        "Football"
       ]
     },
     "date": {
@@ -67,6 +49,17 @@
     },
     "format": {
       "type": "string"
+    },
+    "categorie": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::categorie.categorie",
+      "inversedBy": "article"
+    },
+    "sous_categorie": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sous-categorie.sous-categorie"
     }
   }
 }

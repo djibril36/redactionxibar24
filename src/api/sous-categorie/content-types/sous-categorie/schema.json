@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sous_categories",
+  "info": {
+    "singularName": "sous-categorie",
+    "pluralName": "sous-categories",
+    "displayName": "sousCategorie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "libelle": {
+      "type": "string"
+    },
+    "icone": {
+      "type": "richtext"
+    }
+  }
+}
